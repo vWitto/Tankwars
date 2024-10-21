@@ -100,6 +100,7 @@ GameObject:
   - component: {fileID: -6043865390502051911}
   - component: {fileID: 1570418581970409329}
   - component: {fileID: -3870057619620503475}
+  - component: {fileID: -6778643568587162125}
   m_Layer: 0
   m_Name: TanquePrefab
   m_TagString: Untagged
@@ -321,3 +322,18 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 1
   m_UseLocal: 1
+--- !u!114 &-6778643568587162125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5473621772446105164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52f5bfa32cb1e14b85fe8660755eb25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LocalizacaoSaidaBala: {fileID: 126299137216281625}
+  _frequenciaBala: 1
+  _frequenciaBalaAtual: 0

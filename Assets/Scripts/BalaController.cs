@@ -18,6 +18,7 @@ public class BalaController : MonoBehaviourPun
     public void Inicializar(GameObject atirador)
     {
         this.atirador = atirador;
+        Debug.Log("atirou");
     }
 
     // Update is called once per frame
