@@ -56,6 +56,37 @@ public class GameManager : MonoBehaviourPunCallbacks
         return localizacoesSpawn[indice];
     }
 
+    //Co-rotina responsável por contar e atualizar em tela o cronômetro
+    private IEnumerator TimerCoroutine()
+    {
+        //Enquanto o tempo da partida não acabou e o jogo não finalizou, aguarda 1 segundo e atualiza a interface
+        while (tempoDePartidaAtual > 0 && !ehGameOver)
+        {
+            //Aguarda 1 segundo
+            yield return new WaitForSeconds(1f);
+
+            //Diminui o tempo em 1 segundo
+            tempoDePartidaAtual -= 1f;
+
+            //Atualiza o tempo
+            AtualizarTimerUI();
+        }
+
+        //Se o tempo acabou e o jogo ainda não finalizou, finaliza
+        if (tempoDePartidaAtual <= 0 && !ehGameOver)
+        {
+            //Se for o host, efetua o término de partida
+            if (PhotonNetwork.IsMasterClient)
+            {
+                //Efetua o processo de finalização do jogo, avisando todos no RPC que a partida finalizou
+                photonView.RPC("TerminarJogo", RpcTarget.All);
+            }
+
+            //Para o contador de tempo
+            StopCoroutine(TimerCoroutine());
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
