@@ -29,9 +29,14 @@ public class NetworkManager : MonoBehaviour
         PhotonNetwork.JoinOrCreateRoom("PanzerWars", new Photon.Realtime.RoomOptions { MaxPlayers = 2 }, TypedLobby.Default);
     }
 
-    // Update is called once per frame
-    void Update()
+    //Este método é chamado quando entrar na sala e após o OnJoinedLobby
+    public override void OnJoinedRoom()
     {
-        
+        Debug.Log("Executou OnJoinedRoom");
+
+        //Atualiza a interface informando que o jogador acabou de entrar na sala
+        var lobbyUIManager = FindFirstObjectByType<LobbyUIManager>();
+        lobbyUIManager.AtualizarUI();
     }
+
 }
