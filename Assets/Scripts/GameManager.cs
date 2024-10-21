@@ -87,6 +87,28 @@ public class GameManager : MonoBehaviourPunCallbacks
         }
     }
 
+    //Método responsável por finalizar o jogo
+    [PunRPC]
+    public void TerminarJogo()
+    {
+        //Marca o jogo como finalizado
+        ehGameOver = true;
+
+        FindObjectsByType<TanqueController>(FindObjectsSortMode.None).ToList().ForEach(tanque =>
+        {
+            if (tanque.photonView.IsMine)
+            {
+                //Destrói o tanque
+                PhotonNetwork.Destroy(tanque.gameObject);
+            }
+        });
+
+        if (PhotonNetwork.IsMasterClient)
+        {
+            FindFirstObjectByType<LobbyUIManager>().MostrarResultados();
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
