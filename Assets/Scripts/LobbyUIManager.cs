@@ -60,4 +60,28 @@ public class LobbyUIManager : MonoBehaviour
             photonView.RPC("IniciarPartidaParaTodos", RpcTarget.All);
         }
     }
+
+    //Métdo executado ao clicar no botão de iniciar a partida
+    public void OnClickButtonRecomecarPartida()
+    {
+        //Verifica se "eu sou" o host da sessão e, caso for, inicia a partida com todos que estão em sala
+        if (PhotonNetwork.IsMasterClient)
+        {
+            //Envia uma mensagem via RPC avisando todos os jogadores que a partida deve ser reiniciada
+            photonView.RPC("RecomecarPartidaParaTodos", RpcTarget.All);
+        }
+    }
+
+
+    [PunRPC]
+    public void IniciarPartidaParaTodos()
+    {
+        //Esconde o texto e o botão pois a partida vai iniciar
+        textStatus.gameObject.SetActive(false);
+        buttonIniciarPartida.gameObject.SetActive(false);
+
+        //Procura o objeto e classe GameManager e inicia a partida
+        var gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        gameManager.IniciarPartida();
+    }
 }
