@@ -26,7 +26,21 @@ public class TanqueController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (gm.ehGameOver)
+        {
+            return;
+        }
+
+        //Verifica se "sou eu"
+        if (photonView.IsMine)
+        {
+            //Obtém o comando de girar o tanque (A ou D)
+            float moverHorizonalmente = Input.GetAxis("Horizontal");
+            //Obtém o comando de mover o tanque (W ou S)
+            float moverVerticalmente = Input.GetAxis("Vertical");
+
+            MoverTanque(moverHorizonalmente, moverVerticalmente);
+        }
     }
 
     void MoverTanque(float moverHorizonalmente, float moverVerticalmente)
@@ -46,4 +60,5 @@ public class TanqueController : MonoBehaviour
         //Por este motivo, envia uma mensagem ao dono deste tanque para que ele resete a posição pois só ele pode fazer isso
         photonView.RPC("ResetarPosicaoNoSpawn", photonView.Owner);
     }
+
 }
