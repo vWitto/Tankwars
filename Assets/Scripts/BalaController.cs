@@ -15,16 +15,24 @@ public class BalaController : MonoBehaviour
     //GameObject do tanque que disparou
     private GameObject atirador;
 
-    // Start is called before the first frame update
-    void Start()
+    public void Inicializar(GameObject atirador)
     {
-        
+        this.atirador = atirador;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        //Faz a bala se movimentar 
+        transform.Translate(Vector3.right * velocidade * Time.deltaTime);
+
+        //Contabiliza o tempo para saber se deve destruir a bala
+        tempoDeVidaAtual += Time.deltaTime;
+        if (tempoDeVidaAtual > tempoDeVida)
+        {
+            //Destrói a bala
+            AutoDestruir();
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
