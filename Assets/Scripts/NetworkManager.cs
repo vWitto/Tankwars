@@ -11,6 +11,14 @@ public class NetworkManager : MonoBehaviour
         PhotonNetwork.ConnectUsingSettings();
     }
 
+    // Callback de quando houve conexão no servidor, este método será chamado.
+    public override void OnConnectedToMaster()
+    {
+        Debug.Log("Conectado no servidor photon.");
+
+        PhotonNetwork.JoinLobby();
+    }
+
     // Update is called once per frame
     void Update()
     {
