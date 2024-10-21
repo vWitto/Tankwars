@@ -1,11 +1,9 @@
 using Photon.Pun;
 using Photon.Realtime;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LobbyUIManager : MonoBehaviour
+public class LobbyUIManager : MonoBehaviourPunCallbacks
 {
     //Referência ao botão de iniciar partida
     public Button buttonIniciarPartida;
@@ -25,12 +23,6 @@ public class LobbyUIManager : MonoBehaviour
 
         //Inicia o texto como Carregando enquanto o jogo está carregando
         textStatus.text = "Carregando...";
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     //Método responsável por atualizar a interface
@@ -98,6 +90,7 @@ public class LobbyUIManager : MonoBehaviour
             buttonRecomecarPartida.gameObject.SetActive(true);
         }
     }
+
 
     [PunRPC]
     public void RecomecarPartidaParaTodos()

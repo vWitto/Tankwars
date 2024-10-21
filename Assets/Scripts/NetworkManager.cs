@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NetworkManager : MonoBehaviour
+public class NetworkManager : MonoBehaviourPunCallbacks
 {
     void Start()
     {
@@ -38,5 +38,4 @@ public class NetworkManager : MonoBehaviour
         var lobbyUIManager = FindFirstObjectByType<LobbyUIManager>();
         lobbyUIManager.AtualizarUI();
     }
-
 }

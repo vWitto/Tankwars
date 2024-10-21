@@ -1,9 +1,8 @@
+using ExitGames.Client.Photon;
+using Photon.Pun;
 using Photon.Realtime;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
-public class PontuacaoManager : MonoBehaviour
+public class PontuacaoManager : MonoBehaviourPunCallbacks
 {
     // Adiciona a pontuação ao jogador
     public void AdicionarPontuacao(Player player)
@@ -23,7 +22,6 @@ public class PontuacaoManager : MonoBehaviour
         propriedadePontuacao["Pontuacao"] = pontuacaoAtual;
         player.SetCustomProperties(propriedadePontuacao);
     }
-
     // Adiciona a pontuação ao jogador
     public void ResetarPontuacao(Player player)
     {

@@ -1,9 +1,8 @@
 using Photon.Pun;
-using System.Collections;
-using System.Collections.Generic;
+using System.Data.Common;
 using UnityEngine;
 
-public class BalaController : MonoBehaviour
+public class BalaController : MonoBehaviourPun
 {
     //Velocidade da bala
     public float velocidade = 5f;
@@ -15,6 +14,7 @@ public class BalaController : MonoBehaviour
     //GameObject do tanque que disparou
     private GameObject atirador;
 
+    //Inicializa a bala informando quem disparou ela
     public void Inicializar(GameObject atirador)
     {
         this.atirador = atirador;

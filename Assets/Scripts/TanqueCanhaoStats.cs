@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using Photon.Pun;
+using UnityEngine;
 
-public class TanqueCanhaoStats : MonoBehaviour, IShootable
+public class TanqueCanhaoStats : MonoBehaviourPun, IShootable
 {
     // Localização de onde vai sair a bala
     public Transform LocalizacaoSaidaBala;
@@ -22,7 +20,6 @@ public class TanqueCanhaoStats : MonoBehaviour, IShootable
         bala.GetComponent<BalaController>().Inicializar(GetComponentInParent<TanqueController>().gameObject);
     }
 
-    // Update is called once per frame
     void Update()
     {
         // Contabiliza a frequência da bala, pois o tanque está carregando a bala de canhão
