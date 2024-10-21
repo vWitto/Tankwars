@@ -50,6 +50,12 @@ public class GameManager : MonoBehaviourPunCallbacks
         var tanque = PhotonNetwork.Instantiate("TanquePrefab", go.transform.position, go.transform.rotation);
     }
 
+    public GameObject ObterLocalizacaoSpawn(Player player)
+    {
+        var indice = (player.ActorNumber - 1) % localizacoesSpawn.Count;
+        return localizacoesSpawn[indice];
+    }
+
     // Update is called once per frame
     void Update()
     {
