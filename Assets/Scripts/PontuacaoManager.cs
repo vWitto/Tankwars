@@ -24,9 +24,12 @@ public class PontuacaoManager : MonoBehaviour
         player.SetCustomProperties(propriedadePontuacao);
     }
 
-    // Update is called once per frame
-    void Update()
+    // Adiciona a pontuação ao jogador
+    public void ResetarPontuacao(Player player)
     {
-        
+        //Atualiza a pontuação no PhotonPun e notifica todos jogadores, fazendo isso, o Photon Pun executará o método OnPlayerPropertiesUpdate da classe PontuacaoUIController
+        Hashtable propriedadePontuacao = new Hashtable();
+        propriedadePontuacao["Pontuacao"] = 0;
+        player.SetCustomProperties(propriedadePontuacao);
     }
 }
