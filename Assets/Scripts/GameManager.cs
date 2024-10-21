@@ -21,13 +21,13 @@ public class GameManager : MonoBehaviourPunCallbacks
     //Boolean informando se o jogo finalizou
     public bool ehGameOver = false;
 
-    // Start is called before the first frame update
     void Start()
     {
         //Inicia como falso, pois antes de iniciar a partida, o contador não deve aparecer
         textTimer.gameObject.SetActive(false);
     }
 
+    //Método responsável por iniciar a partida
     public void IniciarPartida()
     {
         ehGameOver = false;
