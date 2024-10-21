@@ -84,4 +84,12 @@ public class LobbyUIManager : MonoBehaviour
         var gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         gameManager.IniciarPartida();
     }
+
+    public void MostrarResultados()
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            buttonRecomecarPartida.gameObject.SetActive(true);
+        }
+    }
 }
