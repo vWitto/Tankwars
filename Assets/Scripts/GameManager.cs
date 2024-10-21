@@ -109,9 +109,11 @@ public class GameManager : MonoBehaviourPunCallbacks
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    //Método responsável por atualizar o tempo
+    void AtualizarTimerUI()
     {
-        
+        int minutos = Mathf.FloorToInt(tempoDePartidaAtual / 60);
+        int segundos = Mathf.FloorToInt(tempoDePartidaAtual % 60);
+        textTimer.text = string.Format("{0:00}:{1:00}", minutos, segundos);
     }
 }
