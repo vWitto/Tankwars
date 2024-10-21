@@ -24,7 +24,8 @@ public class GameManager : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
-        
+        //Inicia como falso, pois antes de iniciar a partida, o contador não deve aparecer
+        textTimer.gameObject.SetActive(false);
     }
 
     public void IniciarPartida()
