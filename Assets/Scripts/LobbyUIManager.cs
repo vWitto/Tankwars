@@ -1,4 +1,5 @@
 using Photon.Pun;
+using Photon.Realtime;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,7 +19,12 @@ public class LobbyUIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        //Inativa o botão pois o jogo acabou de começar
+        buttonIniciarPartida.gameObject.SetActive(false);
+        buttonRecomecarPartida.gameObject.SetActive(false);
+
+        //Inicia o texto como Carregando enquanto o jogo está carregando
+        textStatus.text = "Carregando...";
     }
 
     // Update is called once per frame
@@ -104,5 +110,12 @@ public class LobbyUIManager : MonoBehaviour
         //Procura o objeto e classe GameManager e inicia a partida
         var gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         gameManager.IniciarPartida();
+    }
+
+    //Método executado automaticamente pelo PhotonPun quando o jogador dono da sessão foi alterado (ex.: o criador saiu da sala)
+    public override void OnMasterClientSwitched(Player newMasterClient)
+    {
+        //Atualiza a interface
+        AtualizarUI();
     }
 }
