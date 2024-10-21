@@ -1,18 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class Ishooteable : MonoBehaviour
+//Interface responsável por marcar classes que herdam dela, de serem passíveis de atirar
+public interface IShootable
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    void Atirar();
 }
