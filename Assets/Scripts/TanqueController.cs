@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,7 +19,8 @@ public class TanqueController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
+        gm = FindFirstObjectByType<GameManager>();
     }
 
     // Update is called once per frame
@@ -36,5 +38,12 @@ public class TanqueController : MonoBehaviour
         // Rotaciona o tanque (A ou D) - move no eixo Z para 2D
         float rotacao = -moverHorizonalmente * _velocidadeRotacao * Time.fixedDeltaTime;
         rb.MoveRotation(rb.rotation + rotacao);
+    }
+
+    public void ReceberDano()
+    {
+        //No caso deste jogo, ao receber um dano, o tanque é teleportado para a área de respawn
+        //Por este motivo, envia uma mensagem ao dono deste tanque para que ele resete a posição pois só ele pode fazer isso
+        photonView.RPC("ResetarPosicaoNoSpawn", photonView.Owner);
     }
 }
