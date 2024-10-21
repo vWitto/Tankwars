@@ -1,4 +1,5 @@
 using Photon.Pun;
+using Photon.Realtime;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,6 +18,15 @@ public class NetworkManager : MonoBehaviour
         Debug.Log("Conectado no servidor photon.");
 
         PhotonNetwork.JoinLobby();
+    }
+
+    //Método chamado quando entrou no lobby, ocorre após o OnConnectedToMaster
+    public override void OnJoinedLobby()
+    {
+        Debug.Log("Executou OnJoinedLobby");
+
+        // Cria ou entra em uma sala chamada "PanzerWars"
+        PhotonNetwork.JoinOrCreateRoom("PanzerWars", new Photon.Realtime.RoomOptions { MaxPlayers = 2 }, TypedLobby.Default);
     }
 
     // Update is called once per frame
