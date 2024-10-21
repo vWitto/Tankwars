@@ -5,7 +5,7 @@ using UnityEngine;
 public class BalaController : MonoBehaviourPun
 {
     //Velocidade da bala
-    public float velocidade = 5f;
+    public float velocidade = 8f;
 
     //Tempo de vida até a bala se auto destruir
     public float tempoDeVida = 3f;
